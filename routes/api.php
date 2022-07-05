@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SongController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-$songController = 'App\Http\Controllers\SongController';
-Route::get('songs', $songController . '@index');
-Route::get('songs/{song}', $songController . '@show');
-Route::post('songs', $songController . '@store');
-Route::put('songs/{song}', $songController . '@update');
-Route::delete('songs/{song}', $songController . '@delete');
+Route::get('songs', [SongController::class, 'index']);
+Route::get('songs/{song}', [SongController::class, 'show']);
+Route::post('songs', [SongController::class, 'store']);
+Route::put('songs/{song}', [SongController::class, 'update']);
+Route::delete('songs/{song}', [SongController::class, 'delete']);
