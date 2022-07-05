@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('title');
             $table->string('artist');
-            $table->multiLineString('lyrics');
+            $table->text('lyrics');
         });
     }
 
