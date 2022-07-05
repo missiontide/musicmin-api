@@ -12,29 +12,29 @@ class SongController extends Controller
         return Song::all();
     }
 
-    public function show($id)
+    public function show(Song $song)
     {
-        return Song::find($id);
+        return $song;
     }
 
     public function store(Request $request)
     {
-        return Song::create($request->all());
+        $song = Song::create($request->all());
+
+        return response()->json($song, 201);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Song $song)
     {
-        $article = Song::findOrFail($id);
-        $article->update($request->all());
+        $song->update($request->all());
 
-        return $article;
+        return response()->json($song, 200);
     }
 
-    public function delete(Request $request, $id)
+    public function delete(Request $request, Song $song)
     {
-        $article = Song::findOrFail($id);
-        $article->delete();
+        $song->delete();
 
-        return 204;
+        return response()->json(null, 204);
     }
 }

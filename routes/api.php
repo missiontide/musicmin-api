@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 $songController = 'App\Http\Controllers\SongController';
 Route::get('songs', $songController . '@index');
-Route::get('songs/{id}', $songController . '@show');
+Route::get('songs/{song}', $songController . '@show');
 Route::post('songs', $songController . '@store');
-Route::put('songs/{id}', $songController . '@update');
-Route::delete('songs/{id}', $songController . '@delete');
+Route::put('songs/{song}', $songController . '@update');
+Route::delete('songs/{song}', $songController . '@delete');
