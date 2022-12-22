@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('/songs', [SongController::class, 'index']);
+Route::get('songs/{song}', [SongController::class, 'show']);
