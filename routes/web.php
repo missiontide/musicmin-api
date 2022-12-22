@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SongController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/songs', [SongController::class, 'index']);
+Route::get('/songs/{song}', [SongController::class, 'show']);
+Route::post('/songs', [SongController::class, 'store']);
+Route::put('/songs/{song}', [SongController::class, 'update']);
+Route::delete('/songs/{song}', [SongController::class, 'delete']);
