@@ -35,7 +35,7 @@ class SongController extends Controller
      */
     public function show($id)
     {
-        //
+        return response('show song');
     }
 
     /**
