@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('title');
             $table->string('artist');
-            $table->json('lyrics');
+            $table->text('lyrics');
         });
     }
 
