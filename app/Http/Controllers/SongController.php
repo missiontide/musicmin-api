@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Song;
 use Illuminate\Http\Request;
 
 class SongController extends Controller
@@ -13,7 +14,7 @@ class SongController extends Controller
      */
     public function index()
     {
-        return response('hello');
+        return response(Song::all());
     }
 
     /**
@@ -35,7 +36,7 @@ class SongController extends Controller
      */
     public function show($id)
     {
-        return response('show song');
+        return response(Song::findOrFail($id));
     }
 
     /**
