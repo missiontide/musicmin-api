@@ -23,6 +23,7 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::get('songs', [SongController::class, 'index']);
+Route::get('lyrics', [SongController::class, 'lyrics']);
 Route::get('songs/{song}', [SongController::class, 'show']);
 Route::post('songs', [SongController::class, 'store']);
 Route::put('songs/{song}', [SongController::class, 'update']);
