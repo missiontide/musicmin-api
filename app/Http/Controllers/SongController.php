@@ -15,7 +15,7 @@ class SongController extends Controller
      */
     public function index(): Response
     {
-        return response(Song::all()); //->header('Access-Control-Allow-Origin', '*');
+        return response(Song::all());
     }
 
     /**
@@ -25,7 +25,7 @@ class SongController extends Controller
     public function lyrics(Request $request): Response
     {
         $songIds = explode(',', $request->songs);
-        return response(Song::whereIn('id', $songIds)->get()); //->header('Access-Control-Allow-Origin', '*');
+        return response(Song::whereIn('id', $songIds)->get());
     }
 
     /**
