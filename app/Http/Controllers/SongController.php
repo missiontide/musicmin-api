@@ -25,6 +25,13 @@ class SongController extends Controller
     public function lyrics(Request $request): Response
     {
         $songIds = explode(',', $request->songs);
+        $songs = Song::whereIn('id', $songIds)->get();
+
+        // track how many times a song was used in a powerpoint
+        foreach ($songs as $song) {
+            $song->increment('times_used');
+        }
+        
         return response(Song::whereIn('id', $songIds)->get());
     }
 
