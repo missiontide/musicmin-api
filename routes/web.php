@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SongController;
+use App\Http\Controllers\EmailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,5 +30,7 @@ Route::group(['middleware' => ['cors']], function () {
     Route::post('songs', [SongController::class, 'store']);
     Route::put('songs/{song}', [SongController::class, 'update']);
     Route::delete('songs/{song}', [SongController::class, 'delete']);
+
+    Route::get('request', [EmailController::class, 'sendSongRequestEmail']);
 });
 
