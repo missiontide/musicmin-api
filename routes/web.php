@@ -19,10 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
-
 Route::group(['middleware' => ['cors']], function () {
     Route::get('songs', [SongController::class, 'index']);
     Route::get('lyrics', [SongController::class, 'lyrics']);
