@@ -21,7 +21,7 @@ class EditSong extends EditRecord
                 Forms\Components\MarkdownEditor::make('lyrics')
                     ->required()
                     ->toolbarButtons([])
-                    ->hint('new slide is indicated placing --- on its own line'),
+                    ->hint('new slide is indicated by placing --- on its own line'),
             ]);
     }
 
