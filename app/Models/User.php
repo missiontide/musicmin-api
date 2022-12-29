@@ -53,6 +53,7 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
     {
         $allowedEmails = [
             'patcoronel@missiontide.com',
+            'gbaniqueds@gmail.com',
         ];
         return in_array($this->email, $allowedEmails);
     }
