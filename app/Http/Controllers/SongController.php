@@ -15,7 +15,7 @@ class SongController extends Controller
      */
     public function index(): Response
     {
-        return response(Song::all());
+        return response(Song::select(['id', 'title', 'artist'])->get());
     }
 
     /**
@@ -34,7 +34,7 @@ class SongController extends Controller
         
         return response(Song::whereIn('id', $songIds)->get());
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
