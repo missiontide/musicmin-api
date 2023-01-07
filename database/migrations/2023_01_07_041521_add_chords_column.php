@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('songs', function (Blueprint $table) {
-            $table->text('chords')->default("");
+            $table->text('chords')->nullable();
         });
     }
 
