@@ -20,8 +20,10 @@ class EditSong extends EditRecord
                 Forms\Components\TextInput::make('artist')->required(),
                 Forms\Components\MarkdownEditor::make('lyrics')
                     ->required()
-                    ->toolbarButtons([])
+                    ->disableAllToolbarButtons()
                     ->hint('new slide is indicated by placing --- on its own line'),
+                Forms\Components\RichEditor::make('chords')->toolbarButtons(['bold', 'undo', 'redo'])
+                    ->hint('anything in Bold will be interpreted as a chord. Shift + Space to make a new line'),
             ]);
     }
 
