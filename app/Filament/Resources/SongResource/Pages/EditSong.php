@@ -24,6 +24,9 @@ class EditSong extends EditRecord
                     ->hint('new slide is indicated by placing --- on its own line'),
                 Forms\Components\RichEditor::make('chords')->toolbarButtons(['bold', 'undo', 'redo'])
                     ->hint('anything in Bold will be interpreted as a chord. Shift + Space to make a new line'),
+                Forms\Components\TextInput::make('slug')
+                    ->required()
+                    ->hint('must be format: lowercase-title-lowercase-artist-chords'),
             ]);
     }
 

@@ -23,9 +23,6 @@ Route::group(['middleware' => ['cors']], function () {
     Route::get('songs', [SongController::class, 'index']);
     Route::get('lyrics', [SongController::class, 'lyrics']);
     Route::get('songs/{song}', [SongController::class, 'show']);
-    Route::post('songs', [SongController::class, 'store']);
-    Route::put('songs/{song}', [SongController::class, 'update']);
-    Route::delete('songs/{song}', [SongController::class, 'delete']);
 
     Route::get('request', [EmailController::class, 'sendSongRequestEmail']);
 });

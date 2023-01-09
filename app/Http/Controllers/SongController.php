@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Song;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class SongController extends Controller
 {
@@ -15,7 +16,18 @@ class SongController extends Controller
      */
     public function index(): Response
     {
-        return response(Song::select(['id', 'title', 'artist'])->get());
+        return response(
+            Song::select([
+                'id',
+                'title',
+                'artist',
+                'slug',
+                DB::raw(
+                    "(CASE WHEN (chords = '') IS NOT FALSE THEN false" // chords is either NULL or empty
+                    . ' ELSE true END) as "has_chords"'
+                ),
+            ])->get()
+        );
     }
 
     /**
@@ -25,25 +37,16 @@ class SongController extends Controller
     public function lyrics(Request $request): Response
     {
         $songIds = explode(',', $request->songs);
-        $songs = Song::whereIn('id', $songIds)->get();
+        $songQuery = Song::select(['id', 'title', 'artist', 'lyrics'])->whereIn('id', $songIds);
+        $songs = $songQuery->get();
 
         // track how many times a song was used in a powerpoint
         foreach ($songs as $song) {
             $song->increment('times_used');
         }
-        
-        return response(Song::whereIn('id', $songIds)->get());
-    }
-    
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request): Response
-    {
-        return response();
+
+        // need to re-run the query, because incrementing adds all the other columns
+        return response($songQuery->get());
     }
 
     /**
@@ -55,28 +58,5 @@ class SongController extends Controller
     public function show($id): Response
     {
         return response(Song::findOrFail($id));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param  int  $id
-     * @return Response
-     */
-    public function update(Request $request, int $id): Response
-    {
-        return response();
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy(int $id): Response
-    {
-        return response();
     }
 }
