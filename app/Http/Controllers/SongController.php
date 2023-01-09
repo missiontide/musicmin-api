@@ -52,11 +52,11 @@ class SongController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  string  $slug
      * @return Response
      */
-    public function show($id): Response
+    public function show(string $slug): Response
     {
-        return response(Song::findOrFail($id));
+        return response(Song::where(['slug' => $slug])->firstOrFail());
     }
 }
