@@ -21,6 +21,8 @@ class ListSongs extends ListRecords
                 Tables\Columns\IconColumn::make('has_chords')
                     ->getStateUsing(function ($record): bool { return !empty($record->chords); })
                     ->boolean(),
+                Tables\Columns\TextColumn::make('key'),
+                Tables\Columns\TextColumn::make('tempo'),
                 Tables\Columns\TextColumn::make('tags.name')->searchable(isIndividual: true, isGlobal: false),
                 Tables\Columns\TextColumn::make('times_used')->sortable(),
             ])

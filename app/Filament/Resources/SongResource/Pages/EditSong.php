@@ -18,6 +18,8 @@ class EditSong extends EditRecord
             ->schema([
                 Forms\Components\TextInput::make('title')->required(),
                 Forms\Components\TextInput::make('artist')->required(),
+                Forms\Components\TextInput::make('key'),
+                Forms\Components\TextInput::make('tempo'),
                 Forms\Components\MarkdownEditor::make('lyrics')
                     ->required()
                     ->disableAllToolbarButtons()
