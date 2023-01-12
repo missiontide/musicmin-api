@@ -27,6 +27,9 @@ class CreateSong extends CreateRecord
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->hint('must be format: lowercase-title-lowercase-artist-chords'),
+                Forms\Components\Select::make('tags')
+                    ->multiple()
+                    ->relationship('tags', 'name'),
             ]);
     }
 }
