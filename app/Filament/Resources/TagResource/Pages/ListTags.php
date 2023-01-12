@@ -19,7 +19,7 @@ class ListTags extends ListRecords
                 Tables\Columns\TextColumn::make('name')->sortable()->searchable(isIndividual: true, isGlobal: false),
                 Tables\Columns\TextColumn::make('type')->sortable()->searchable(isIndividual: true, isGlobal: false),
             ])
-            ->defaultSort('name', 'asc');
+            ->defaultSort('type', 'desc');
     }
 
     protected function getActions(): array
@@ -27,5 +27,10 @@ class ListTags extends ListRecords
         return [
             Actions\CreateAction::make(),
         ];
+    }
+
+    protected function getTableRecordsPerPageSelectOptions(): array
+    {
+        return [200];
     }
 }
