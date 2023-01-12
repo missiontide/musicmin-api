@@ -7,7 +7,6 @@ use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Collection;
 
 class ListSongs extends ListRecords
 {

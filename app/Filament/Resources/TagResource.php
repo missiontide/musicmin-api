@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SongResource\Pages;
-use App\Filament\Resources\SongResource\RelationManagers;
-use App\Models\Song;
+use App\Filament\Resources\TagResource\Pages;
+use App\Filament\Resources\TagResource\RelationManagers;
+use App\Models\Tag;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -13,11 +13,11 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class SongResource extends Resource
+class TagResource extends Resource
 {
-    protected static ?string $model = Song::class;
+    protected static ?string $model = Tag::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-music-note';
+    protected static ?string $navigationIcon = 'heroicon-o-tag';
 
     public static function form(Form $form): Form
     {
@@ -54,9 +54,9 @@ class SongResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSongs::route('/'),
-            'create' => Pages\CreateSong::route('/create'),
-            'edit' => Pages\EditSong::route('/{record}/edit'),
+            'index' => Pages\ListTags::route('/'),
+            'create' => Pages\CreateTag::route('/create'),
+            'edit' => Pages\EditTag::route('/{record}/edit'),
         ];
     }
 }
