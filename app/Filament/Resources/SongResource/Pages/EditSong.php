@@ -30,8 +30,9 @@ class EditSong extends EditRecord
                     ->required()
                     ->hint('must be format: lowercase-title-lowercase-artist-chords'),
                 Forms\Components\Select::make('tags')
+                    ->relationship('tags', 'name')
                     ->multiple()
-                    ->relationship('tags', 'name'),
+                    ->preload(),
             ]);
     }
 
