@@ -4,6 +4,7 @@
 /* Custom Filament .css */
 /* See https://filamentphp.com/blog/easy-way-to-create-a-filament-theme-in-minutes for instructions */
 
+/* .prose class gets applied only to RichEditor */
 .prose {
     font-family: Roboto Mono, monospace !important;
 }
