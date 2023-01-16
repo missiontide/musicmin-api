@@ -1,0 +1,9 @@
+/*resources\css\app.css*/
+@import "../../vendor/filament/filament/resources/css/app.css";
+
+/* Custom Filament .css */
+/* See https://filamentphp.com/blog/easy-way-to-create-a-filament-theme-in-minutes for instructions */
+
+.prose {
+    font-family: Roboto Mono, monospace !important;
+}
