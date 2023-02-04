@@ -50,6 +50,25 @@ class SongController extends Controller
     }
 
     /**
+     * @param Request $request must contain parameter songs -- a comma-delimited list of song ids
+     * @return Response
+     */
+    public function chords(Request $request): Response
+    {
+        $songIds = explode(',', $request->songs);
+        $songQuery = Song::select(['id', 'title', 'artist', 'key', 'chords'])->whereIn('id', $songIds);
+        $songs = $songQuery->get();
+
+        // track how many times a song was used in chord sheets
+        foreach ($songs as $song) {
+            $song->increment('times_used_chords');
+        }
+
+        // need to re-run the query, because incrementing adds all the other columns
+        return response($songQuery->get());
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  string  $slug

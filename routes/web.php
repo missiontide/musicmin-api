@@ -22,6 +22,7 @@ Route::get('/', function () {
 Route::group(['middleware' => ['cors']], function () {
     Route::get('songs', [SongController::class, 'index']);
     Route::get('lyrics', [SongController::class, 'lyrics']);
+    Route::get('chords', [SongController::class, 'chords']);
     Route::get('songs/{slug}', [SongController::class, 'show']);
 
     Route::get('request', [EmailController::class, 'sendSongRequestEmail']);
