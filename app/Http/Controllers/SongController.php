@@ -18,15 +18,21 @@ class SongController extends Controller
     {
         return response(
             Song::select([
-                'id',
+                'songs.id',
                 'title',
                 'artist',
                 'slug',
+                'tempo',
+                'key',
                 DB::raw(
                     "(CASE WHEN (chords = '') IS NOT FALSE THEN false" // chords is either NULL or empty
                     . ' ELSE true END) as "has_chords"'
                 ),
-            ])->get()
+                DB::raw("json_agg(song_tag.tag_id) AS tag_ids")
+            ])->join('song_tag', function ($join){
+                $join->on('songs.id', '=', 'song_tag.song_id')
+                    ->orderBy('tag_id');
+            })->groupBy('songs.id')->get()
         );
     }
 
